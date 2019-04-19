@@ -66,17 +66,6 @@ public func example(of description: String, action: () -> ()) {
 }
 
 
-var someList = LinkedList<Int>()
-someList.append(2)
-someList.append(3)
-someList.push(1)
-someList.append(4)
-someList.append(5)
-someList.append(6)
-someList.append(7)
-someList.append(8)
 
-someList.reverse()
-print(someList)
 
 

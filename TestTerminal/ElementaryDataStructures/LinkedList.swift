@@ -206,6 +206,17 @@ extension LinkedList: Collection {
 
 extension LinkedList {
     
+    mutating func slowReverse() {
+    
+    var tempList = LinkedList<Value>()
+        for value in self {
+            tempList.push(value)
+        }
+        
+    head = tempList.head
+    
+    }
+    
     mutating func reverse() {
         tail = head
         var prev = head
