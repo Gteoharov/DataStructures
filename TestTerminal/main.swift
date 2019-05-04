@@ -59,13 +59,21 @@ func getMiddle<T>(_ list: LinkedList<T>) -> Node<T>? {
     return slow
 }
 
+
 public func example(of description: String, action: () -> ()) {
     print("---Example of \(description)---")
     action()
     print()
 }
 
-
-
+var someList = LinkedList<Int>()
+someList.append(2)
+someList.push(1)
+someList.append(3)
+someList.append(4)
+someList.append(5)
+someList.append(6)
+someList.append(7)
+someList.append(8)
 
 
