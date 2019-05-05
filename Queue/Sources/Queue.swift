@@ -28,10 +28,62 @@
 
 
 //TODO: Queue Protocol
+protocol Queue {
+    associatedtype Element
+    
+    mutating func enqueueu(_ element: Element)
+    mutating func dequeue() -> Element?
+    var isEmpty: Bool { get }
+    var peek: Element? { get }
+    
+}
 
 
 //TODO: Queue Array
-
+struct QueueArray<T>: Queue {
+    private var array: [T] = []
+    var isEmpty: Bool {
+        return array.isEmpty
+    }
+    var peek: T? {
+        return array.first
+    }
+    
+    mutating func enqueueu(_ element: T) {
+        array.append(element)
+    }
+    
+    @discardableResult
+    mutating func dequeue() -> T? {
+        return isEmpty ? nil : array.removeFirst()
+    }
+    
+}
 
 //TODO: Queue Stack
+struct QueueStack<T>: Queue {
+    private var dequeueStack: [T] = []
+    private var enqueueuStack: [T] = []
+    
+    var isEmpty: Bool {
+        return dequeueStack.isEmpty && enqueueuStack.isEmpty
+    }
+    
+    var peek: T? {
+        return !dequeueStack.isEmpty ? dequeueStack.last : enqueueuStack.first
+    }
+    
+    mutating func enqueueu(_ element: T) {
+        enqueueuStack.append(element)
+    }
+    
+    @discardableResult
+    mutating func dequeue() -> T? {
+        if dequeueStack.isEmpty {
+            dequeueStack = enqueueuStack.reversed()
+            enqueueuStack.removeAll()
+        }
+        return dequeueStack.popLast()
+    }
+}
 

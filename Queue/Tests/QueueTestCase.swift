@@ -31,24 +31,42 @@ import XCTest
 @testable import DataStructures
 
 final class QueueTestCase: XCTestCase {
-  
+  var queueArray = QueueArray<String>()
+  var queueStack = QueueStack<String>()
+    
+    
+    
   override func setUp() {
-
+    queueArray.enqueueu("Stavreca")
+    queueArray.enqueueu("Sashonera")
+    queueArray.enqueueu("Buhala")
+    
+    queueStack.enqueueu("Ilianka")
+    queueStack.enqueueu("Maq")
+    queueStack.enqueueu("Betunkaaa")
   }
   
   func test_enqueueArray() {
-    
+    XCTAssertEqual(queueArray.peek, "Stavreca")
   }
   
   func test_enqueueStack() {
-    
+    XCTAssertEqual(queueStack.peek, "Ilianka")
   }
   
   func test_dequeueArray() {
-
+    queueArray.dequeue()
+    queueArray.dequeue()
+    XCTAssertEqual(queueArray.peek, "Buhala")
+    queueArray.dequeue()
+    XCTAssertTrue(queueArray.isEmpty)
   }
   
   func test_dequeueStack() {
-
+    queueStack.dequeue()
+    queueStack.dequeue()
+    XCTAssertEqual(queueStack.peek, "Betunkaaa")
+    queueStack.dequeue()
+    XCTAssertTrue(queueStack.isEmpty)
   }
 }
