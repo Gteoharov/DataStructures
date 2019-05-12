@@ -1,4 +1,9 @@
-/// Copyright (c) 2019 Razeware LLC
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FILEHEADER</key>
+	<string>/ Copyright (c) ___YEAR___ Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -24,44 +29,6 @@
 /// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 /// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-
-import XCTest
-@testable import DataStructures
-
-protocol BoardGameManager {
-  associatedtype Player
-  mutating func nextPlayer() -> Player?
-}
-
-//TODO: Extend one (or both!) queue implementation(s) to adopt the BoardGameManager protocol
-
-extension QueueStack: BoardGameManager {
-    typealias Player = T
-    
-    mutating func nextPlayer() -> Player? {
-        guard let player = dequeue() else {
-            return nil
-        }
-        enqueue(player)
-        return player
-    }
-}
-
-
-final class ChallengeTestCase: XCTestCase {
-  func test_playerOrder() {
-    var queue = QueueStack<String>()
-    queue.enqueue("Kirby")
-    queue.enqueue("Samus")
-    queue.enqueue("Pikachu")
-    queue.enqueue("Toon Ozma")
-    
-    XCTAssertEqual(queue.peek, "Kirby")
-    queue.nextPlayer()
-    queue.nextPlayer()
-    XCTAssertEqual(queue.peek, "Pikachu")
-    queue.nextPlayer()
-    XCTAssertEqual(queue.peek, "Toon Ozma")
-  }
-}
+/// THE SOFTWARE.</string>
+</dict>
+</plist>

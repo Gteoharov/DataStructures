@@ -29,39 +29,24 @@
 import XCTest
 @testable import DataStructures
 
-protocol BoardGameManager {
-  associatedtype Player
-  mutating func nextPlayer() -> Player?
-}
+final class SortingTestCase: XCTestCase {
+  var testArray: [Int] = []
+  let sortedArray = [3, 4, 9, 10]
+  
+  override func setUp() {
+    testArray = [9, 4, 10, 3]
+  }
+  
+  func test_bubbleSort() {
+    bubbleSort(&testArray)
+    XCTAssertEqual(testArray, sortedArray)
+  }
+  
+  func test_selectionSort() {
 
-//TODO: Extend one (or both!) queue implementation(s) to adopt the BoardGameManager protocol
+  }
+  
+  func test_insertionSort() {
 
-extension QueueStack: BoardGameManager {
-    typealias Player = T
-    
-    mutating func nextPlayer() -> Player? {
-        guard let player = dequeue() else {
-            return nil
-        }
-        enqueue(player)
-        return player
-    }
-}
-
-
-final class ChallengeTestCase: XCTestCase {
-  func test_playerOrder() {
-    var queue = QueueStack<String>()
-    queue.enqueue("Kirby")
-    queue.enqueue("Samus")
-    queue.enqueue("Pikachu")
-    queue.enqueue("Toon Ozma")
-    
-    XCTAssertEqual(queue.peek, "Kirby")
-    queue.nextPlayer()
-    queue.nextPlayer()
-    XCTAssertEqual(queue.peek, "Pikachu")
-    queue.nextPlayer()
-    XCTAssertEqual(queue.peek, "Toon Ozma")
   }
 }
